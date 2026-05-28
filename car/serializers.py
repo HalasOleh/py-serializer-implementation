@@ -1,4 +1,3 @@
-from django.core.validators import validate_unicode_slug
 from rest_framework import serializers
 
 from car.models import Car
@@ -19,6 +18,15 @@ class CarSerializer(serializers.Serializer):
         return Car.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.manufacturer = validated_data.get("manufacturer", instance.manufacturer)
-        instance.model = validated_data.get("model", instance.model)
-        instance.horse_powers = validated_data.get("horse_powers", instance.horse_powers)
+        instance.manufacturer = validated_data.get(
+            "manufacturer",
+            instance.manufacturer
+        )
+        instance.model = validated_data.get(
+            "model",
+            instance.model
+        )
+        instance.horse_powers = validated_data.get(
+            "horse_powers",
+            instance.horse_powers
+        )
